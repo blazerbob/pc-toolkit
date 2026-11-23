@@ -34,6 +34,20 @@ python -m ruff check .
 
 (dev-зависимости: `python -m pip install -e ".[dev]"`)
 
+## Сборка .exe и инсталлятора
+
+Нужны **PyInstaller** и **Inno Setup 6**.
+
+```powershell
+python -m pip install pyinstaller
+powershell -ExecutionPolicy Bypass -File packaging\build.ps1
+```
+
+Скрипт сначала собирает `dist\PC Toolkit.exe` (onefile, без консоли), затем
+компилирует установщик `dist\installer\PC-Toolkit-Setup-0.1.0.exe`
+(Inno Setup, ставит по умолчанию в `D:\PC Toolkit`, создаёт ярлыки, есть
+деинсталлятор). Путь к `ISCC.exe` можно переопределить переменной `ISCC`.
+
 ## Структура
 
 ```
